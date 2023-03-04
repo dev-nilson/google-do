@@ -2,6 +2,8 @@ import { IconButton } from "@material-tailwind/react";
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AppsIcon from '@mui/icons-material/Apps';
+import logo from "@/assets/logo.png";
+import Image from "next/image";
 
 function Header() {
   return (
@@ -14,7 +16,7 @@ function Header() {
       >
         <MenuIcon />
       </IconButton>
-      <h1>Google Does</h1>
+      <Image src={logo} alt="logo" width={25} height={25} />
 
       <div className="mx-5 md:mx-20 flex flex-grow items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-md focus-within:shadow-md">
         <SearchIcon />
