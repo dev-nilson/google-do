@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import { IconButton } from "@material-tailwind/react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FolderIcon from '@mui/icons-material/Folder';
+import FolderIcon from "@mui/icons-material/Folder";
 import Header from "@/components/Header/Header";
 import newDoc from "@/assets/new.png";
 
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Google Do</title>
+        <title>Google Does</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
@@ -23,7 +23,7 @@ export default function Home() {
             <div className="flex items-center justify-between pt-6 pb-2">
               <h2 className="text-gray-900">Start a new document</h2>
               <IconButton
-                className="rounded rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
+                className="rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
                 color="gray"
                 variant="outlined"
                 ripple={true}

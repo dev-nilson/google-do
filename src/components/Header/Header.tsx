@@ -1,9 +1,9 @@
+import Image from "next/image";
 import { IconButton } from "@material-tailwind/react";
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AppsIcon from '@mui/icons-material/Apps';
 import logo from "@/assets/logo.png";
-import Image from "next/image";
 
 function Header() {
   return (
