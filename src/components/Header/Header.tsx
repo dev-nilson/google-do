@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="flex items-center sticky top-0 z-50 px-4 py-2 shadow-md bg-white">
       <IconButton
-        className="rounded rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
+        className="rounded-full border-transparent focus:ring-0 p-6 mr-2 text-gray-700"
         color="gray"
         variant="outlined"
         ripple={true}
@@ -28,7 +28,7 @@ function Header() {
       </div>
 
       <IconButton
-        className="rounded rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
+        className="rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
         color="gray"
         variant="outlined"
         ripple={true}
