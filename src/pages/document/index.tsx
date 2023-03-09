@@ -6,7 +6,7 @@ import { Button } from "@material-tailwind/react";
 import SaveIcon from "@mui/icons-material/Save";
 import TextEditor from "@/components/TextEditor/TextEditor";
 
-function DocPage() {
+function Document() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -65,4 +65,4 @@ function DocPage() {
   );
 }
 
-export default DocPage;
+export default Document;

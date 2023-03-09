@@ -14,16 +14,16 @@ function TextEditor() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(() => {
-    const state = convertFromRaw(JSON.parse(
-      '{"blocks":[{"key":"69as9","text":"abcs","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}'
-    ));
-
+    const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
     setEditorState(EditorState.createWithContent(state));
   }, []);
 
   const onEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
-    // console.log(convertToRaw(editorState.getCurrentContent()));
+    localStorage.setItem(
+      "data",
+      JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+    );
   };
 
   return (
