@@ -3,6 +3,7 @@ import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { Button } from "@material-tailwind/react";
 import SaveIcon from "@mui/icons-material/Save";
+import TextEditor from "@/components/TextEditor/TextEditor";
 
 function DocPage() {
   return (
@@ -27,6 +28,7 @@ function DocPage() {
           <SaveIcon fontSize="small" />Save
         </Button>
       </header>
+      <TextEditor />
     </div>
   );
 }
