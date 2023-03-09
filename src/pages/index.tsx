@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
@@ -6,6 +7,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FolderIcon from "@mui/icons-material/Folder";
 import Header from "@/components/Header/Header";
 import newDoc from "@/assets/new.png";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,12 +34,19 @@ export default function Home() {
               </IconButton>
             </div>
             <div>
-              <div className="relative h-40 w-32 border-[1px] cursor-pointer border-gray-300 rounded-md hover:border-blue-500">
-                <Image className="rounded-md" src={newDoc} fill={true} alt="" />
-              </div>
-              <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">
-                Blank
-              </p>
+              <Link href="/document">
+                <div className="relative h-40 w-32 border-[1px] cursor-pointer border-gray-300 rounded-md hover:border-blue-500">
+                  <Image
+                    className="rounded-md"
+                    src={newDoc}
+                    fill={true}
+                    alt=""
+                  />
+                </div>
+                <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">
+                  Blank
+                </p>
+              </Link>
             </div>
           </div>
         </section>
