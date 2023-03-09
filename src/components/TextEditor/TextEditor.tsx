@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
@@ -11,11 +11,19 @@ const Editor = dynamic(
 );
 
 function TextEditor() {
-  const [editorState, seteditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+  useEffect(() => {
+    const state = convertFromRaw(JSON.parse(
+      '{"blocks":[{"key":"69as9","text":"abcs","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}'
+    ));
+
+    setEditorState(EditorState.createWithContent(state));
+  }, []);
 
   const onEditorStateChange = (editorState: any) => {
-    seteditorState(editorState);
-    console.log(convertToRaw(editorState.getCurrentContent()).blocks);
+    setEditorState(editorState);
+    // console.log(convertToRaw(editorState.getCurrentContent()));
   };
 
   return (
@@ -23,6 +31,7 @@ function TextEditor() {
       <Editor
         toolbarClassName="flex sticky top-0 z-50 !justify-center mx-auto"
         editorClassName="mt-6 p-10 bg-white shadow-md max-w-4xl mx-auto"
+        editorState={editorState}
         onEditorStateChange={onEditorStateChange}
       />
     </div>
