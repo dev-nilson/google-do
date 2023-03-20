@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { IconButton } from "@material-tailwind/react";
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AppsIcon from '@mui/icons-material/Apps';
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import AppsIcon from "@mui/icons-material/Apps";
 import logo from "@/assets/logo.png";
+import Link from "next/link";
 
 function Header() {
   return (
@@ -16,7 +17,10 @@ function Header() {
       >
         <MenuIcon />
       </IconButton>
-      <Image src={logo} alt="logo" width={25} height={25} />
+      <Link className="flex gap-3 items-center text-lg text-gray-700" href="/">
+        <Image src={logo} alt="logo" width={25} height={25} />
+        <h1>Does</h1>
+      </Link>
 
       <div className="mx-5 md:mx-20 flex flex-grow items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-md focus-within:shadow-md">
         <SearchIcon />
