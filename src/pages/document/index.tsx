@@ -4,6 +4,7 @@ import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { Button } from "@material-tailwind/react";
 import SaveIcon from "@mui/icons-material/Save";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import TextEditor from "@/components/TextEditor/TextEditor";
 
 function Document() {
@@ -52,7 +53,16 @@ function Document() {
         </div>
 
         <Button
-          className="flex items-center gap-1"
+          className="flex items-center gap-1 mx-1"
+          size="sm"
+          variant="outlined"
+          onClick={handleClick}
+        >
+          <DeleteForeverIcon fontSize="small" />
+          Clear
+        </Button>
+        <Button
+          className="flex items-center gap-1 mx-1"
           size="sm"
           onClick={handleClick}
         >
