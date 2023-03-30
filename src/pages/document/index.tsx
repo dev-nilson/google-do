@@ -16,7 +16,16 @@ function Document() {
     setTitle(e.target.value);
   };
 
-  const handleClick = () => {
+  const handleSave = () => {
+    if (!title) {
+      inputRef.current?.focus();
+      setError("Name document before saving");
+    } else {
+      setError("");
+    }
+  };
+
+  const handleClear = () => {
     if (!title) {
       inputRef.current?.focus();
       setError("Name document before saving");
@@ -56,7 +65,7 @@ function Document() {
           className="flex items-center gap-1 mx-1"
           size="sm"
           variant="outlined"
-          onClick={handleClick}
+          onClick={handleClear}
         >
           <DeleteForeverIcon fontSize="small" />
           Clear
@@ -64,7 +73,7 @@ function Document() {
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
-          onClick={handleClick}
+          onClick={handleSave}
         >
           <SaveIcon fontSize="small" />
           Save
