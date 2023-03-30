@@ -33,6 +33,7 @@ function TextEditor() {
         editorClassName="mt-6 p-10 bg-white shadow-md max-w-4xl mx-auto"
         editorState={editorState}
         onEditorStateChange={onEditorStateChange}
+        placeholder="Write your question and press enter to get a response ⤶"
       />
     </div>
   );
