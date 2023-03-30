@@ -17,15 +17,6 @@ function TextEditor() {
   useEffect(() => {
     const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
     setEditorState(EditorState.createWithContent(state));
-
-    /* openai
-      .createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: "Hello!" }],
-      })
-      .then((result) => {
-        console.log(result.data.choices[0].message?.content);
-      }); */
   }, []);
 
   const onEditorStateChange = (editorState: any) => {
@@ -38,7 +29,17 @@ function TextEditor() {
 
   const handleChange = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
-      console.log("ENTER");
+      const prompt = convertToRaw(editorState.getCurrentContent()).blocks[0]
+        .text;
+
+      openai
+        .createChatCompletion({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: prompt }],
+        })
+        .then((result) => {
+          console.log(result.data.choices[0].message?.content);
+        });
     }
   };
 
