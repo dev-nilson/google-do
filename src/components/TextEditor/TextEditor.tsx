@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import { openai } from "@/utils/openai";
 
 const Editor = dynamic(
   () => import("react-draft-wysiwyg").then((module) => module.Editor),
@@ -16,6 +17,13 @@ function TextEditor() {
   useEffect(() => {
     const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
     setEditorState(EditorState.createWithContent(state));
+
+    openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: "Hello!" }],
+    }).then(result => {
+      console.log(result.data.choices[0].message?.content)
+    })
   }, []);
 
   const onEditorStateChange = (editorState: any) => {
