@@ -18,12 +18,14 @@ function TextEditor() {
     const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
     setEditorState(EditorState.createWithContent(state));
 
-    openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: "Hello!" }],
-    }).then(result => {
-      console.log(result.data.choices[0].message?.content)
-    })
+    /* openai
+      .createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: "Hello!" }],
+      })
+      .then((result) => {
+        console.log(result.data.choices[0].message?.content);
+      }); */
   }, []);
 
   const onEditorStateChange = (editorState: any) => {
@@ -34,8 +36,14 @@ function TextEditor() {
     );
   };
 
+  const handleChange = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      console.log("ENTER");
+    }
+  };
+
   return (
-    <div className="bg-gray-200 min-h-screen pb-16">
+    <div className="bg-gray-200 min-h-screen pb-16" onKeyUp={handleChange}>
       <Editor
         toolbarClassName="flex sticky top-0 z-50 !justify-center mx-auto"
         editorClassName="mt-6 p-10 bg-white shadow-md max-w-4xl mx-auto"
