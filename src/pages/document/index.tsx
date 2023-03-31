@@ -22,7 +22,9 @@ function Document() {
   };
 
   const handleClear = () => {
-    textEditorRef.current.clearDocument();
+    if (confirm("Are you sure you want to clear this document?") == true) {
+      textEditorRef.current.clearDocument();
+    }
   };
 
   const handleSave = () => {
