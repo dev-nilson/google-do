@@ -10,6 +10,7 @@ function Document() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const textEditorRef = useRef<any>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -21,6 +22,8 @@ function Document() {
       setError("Name document before saving");
     } else {
       setError("");
+      console.log("SAVE");
+      textEditorRef.current.log();
     }
   };
 
@@ -50,7 +53,7 @@ function Document() {
             <p className="option">Tools</p>
           </div>
         </div>
-{/* 
+        {/* 
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
@@ -69,7 +72,7 @@ function Document() {
           Save
         </Button>
       </header>
-      <TextEditor />
+      <TextEditor ref={textEditorRef} />
     </div>
   );
 }

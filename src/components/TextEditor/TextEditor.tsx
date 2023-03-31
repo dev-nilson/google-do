@@ -1,12 +1,7 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState, useImperativeHandle } from "react";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import {
-  EditorState,
-  convertToRaw,
-  convertFromRaw,
-  Modifier,
-} from "draft-js";
+import { EditorState, convertToRaw, convertFromRaw, Modifier } from "draft-js";
 import { openai } from "@/utils/openai";
 
 const Editor = dynamic(
@@ -16,7 +11,14 @@ const Editor = dynamic(
   }
 );
 
-function TextEditor() {
+// eslint-disable-next-line react/display-name
+const TextEditor = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    log() {
+      console.log("child function");
+    },
+  }));
+
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(() => {
@@ -74,6 +76,6 @@ function TextEditor() {
       />
     </div>
   );
-}
+});
 
 export default TextEditor;
