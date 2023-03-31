@@ -25,15 +25,6 @@ function Document() {
     }
   };
 
-  const handleClear = () => {
-    if (!title) {
-      inputRef.current?.focus();
-      setError("Name document before saving");
-    } else {
-      setError("");
-    }
-  };
-
   return (
     <div>
       <header className="flex justify-between items-center px-5 pt-3 pb-1">
@@ -60,7 +51,7 @@ function Document() {
             <p className="option">Tools</p>
           </div>
         </div>
-
+{/* 
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
@@ -69,7 +60,7 @@ function Document() {
         >
           <DeleteForeverIcon fontSize="small" />
           Clear
-        </Button>
+        </Button> */}
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"

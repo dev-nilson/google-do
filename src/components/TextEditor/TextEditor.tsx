@@ -22,7 +22,6 @@ function TextEditor() {
 
   useEffect(() => {
     const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
-    console.log(state);
     setEditorState(EditorState.createWithContent(state));
   }, []);
 
