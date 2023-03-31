@@ -15,14 +15,12 @@ const Editor = dynamic(
 const TextEditor = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     saveDocument() {
-      console.log("Save Document");
       localStorage.setItem(
         "data",
         JSON.stringify(convertToRaw(editorState.getCurrentContent()))
       );
     },
     clearDocument() {
-      console.log("Clear Document");
       setEditorState(EditorState.createEmpty());
     },
   }));
@@ -64,7 +62,6 @@ const TextEditor = forwardRef((props, ref) => {
           );
 
           setEditorState(newEditorState);
-          console.log(newEditorState);
         });
     }
   };
