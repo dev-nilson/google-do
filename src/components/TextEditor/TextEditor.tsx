@@ -5,7 +5,6 @@ import {
   EditorState,
   convertToRaw,
   convertFromRaw,
-  ContentState,
   Modifier,
 } from "draft-js";
 import { openai } from "@/utils/openai";

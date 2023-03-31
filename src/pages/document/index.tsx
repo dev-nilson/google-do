@@ -4,7 +4,6 @@ import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { Button } from "@material-tailwind/react";
 import SaveIcon from "@mui/icons-material/Save";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import TextEditor from "@/components/TextEditor/TextEditor";
 
 function Document() {
