@@ -21,6 +21,10 @@ const TextEditor = forwardRef((props, ref) => {
         JSON.stringify(convertToRaw(editorState.getCurrentContent()))
       );
     },
+    clearDocument() {
+      console.log("Clear Document");
+      setEditorState(EditorState.createEmpty());
+    },
   }));
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty());

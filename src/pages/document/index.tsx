@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { Button } from "@material-tailwind/react";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import SaveIcon from "@mui/icons-material/Save";
 import TextEditor from "@/components/TextEditor/TextEditor";
 
@@ -15,6 +16,10 @@ function Document() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
+
+  const handleClear = () => {
+    textEditorRef.current.clearDocument();
+  }
 
   const handleSave = () => {
     if (!title) {
@@ -52,7 +57,7 @@ function Document() {
             <p className="option">Tools</p>
           </div>
         </div>
-        {/* 
+
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
@@ -61,7 +66,7 @@ function Document() {
         >
           <DeleteForeverIcon fontSize="small" />
           Clear
-        </Button> */}
+        </Button>
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
