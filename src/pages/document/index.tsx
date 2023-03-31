@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
@@ -13,13 +13,17 @@ function Document() {
   const inputRef = useRef<HTMLInputElement>(null);
   const textEditorRef = useRef<any>(null);
 
+  useEffect(() => {
+    setTitle(localStorage.getItem("title") || "");
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
 
   const handleClear = () => {
     textEditorRef.current.clearDocument();
-  }
+  };
 
   const handleSave = () => {
     if (!title) {
@@ -27,6 +31,7 @@ function Document() {
       setError("Name document before saving");
     } else {
       setError("");
+      localStorage.setItem("title", title);
       textEditorRef.current.saveDocument();
     }
   };
