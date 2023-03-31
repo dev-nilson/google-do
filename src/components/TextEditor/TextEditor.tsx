@@ -14,8 +14,12 @@ const Editor = dynamic(
 // eslint-disable-next-line react/display-name
 const TextEditor = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
-    log() {
-      console.log("child function");
+    saveDocument() {
+      console.log("Save Document");
+      localStorage.setItem(
+        "data",
+        JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+      );
     },
   }));
 
@@ -28,10 +32,6 @@ const TextEditor = forwardRef((props, ref) => {
 
   const onEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
-    localStorage.setItem(
-      "data",
-      JSON.stringify(convertToRaw(editorState.getCurrentContent()))
-    );
   };
 
   const handleChange = (e: React.KeyboardEvent<HTMLDivElement>) => {

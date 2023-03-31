@@ -22,8 +22,7 @@ function Document() {
       setError("Name document before saving");
     } else {
       setError("");
-      console.log("SAVE");
-      textEditorRef.current.log();
+      textEditorRef.current.saveDocument();
     }
   };
 
