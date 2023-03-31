@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
+import {
+  EditorState,
+  convertToRaw,
+  convertFromRaw,
+  ContentState,
+  Modifier,
+} from "draft-js";
 import { openai } from "@/utils/openai";
 
 const Editor = dynamic(
@@ -16,6 +22,7 @@ function TextEditor() {
 
   useEffect(() => {
     const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
+    console.log(state);
     setEditorState(EditorState.createWithContent(state));
   }, []);
 
@@ -38,7 +45,22 @@ function TextEditor() {
           messages: [{ role: "user", content: prompt }],
         })
         .then((result) => {
-          console.log(result.data.choices[0].message?.content);
+          const response = result.data.choices[0].message?.content;
+          const currentContent = editorState.getCurrentContent();
+
+          const selectionState = editorState.getSelection();
+          const newEditorState = EditorState.push(
+            editorState,
+            Modifier.insertText(
+              currentContent,
+              selectionState,
+              response as string
+            ),
+            "insert-fragment"
+          );
+
+          setEditorState(newEditorState);
+          console.log(newEditorState);
         });
     }
   };
