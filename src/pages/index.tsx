@@ -6,7 +6,7 @@ import { IconButton } from "@material-tailwind/react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FolderIcon from "@mui/icons-material/Folder";
 import Header from "@/components/Header/Header";
-import newDoc from "@/assets/new.png";
+import newDoc from "../../assets/new.png";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });

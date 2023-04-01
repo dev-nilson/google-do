@@ -3,7 +3,7 @@ import { IconButton } from "@material-tailwind/react";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AppsIcon from "@mui/icons-material/Apps";
-import logo from "@/assets/logo.png";
+import logo from "../../../assets/logo.png";
 import Link from "next/link";
 
 function Header() {
