@@ -13,6 +13,8 @@ const Editor = dynamic(
 
 // eslint-disable-next-line react/display-name
 const TextEditor = forwardRef((props, ref) => {
+  const [loading, setLoading] = useState(false);
+
   useImperativeHandle(ref, () => ({
     saveDocument() {
       localStorage.setItem(
@@ -38,6 +40,7 @@ const TextEditor = forwardRef((props, ref) => {
 
   const handleChange = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
+      setLoading(true);
       const prompt = convertToRaw(editorState.getCurrentContent()).blocks[0]
         .text;
 
@@ -62,12 +65,13 @@ const TextEditor = forwardRef((props, ref) => {
           );
 
           setEditorState(newEditorState);
+          setLoading(false);
         });
     }
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen pb-16" onKeyUp={handleChange}>
+    <div className="bg-gray-200 h-full pb-16" onKeyUp={handleChange}>
       <Editor
         toolbarClassName="flex sticky top-0 z-50 !justify-center mx-auto"
         editorClassName="mt-6 p-10 bg-white shadow-md max-w-4xl mx-auto"
@@ -75,6 +79,11 @@ const TextEditor = forwardRef((props, ref) => {
         onEditorStateChange={onEditorStateChange}
         placeholder="Write your question and press enter to get a response ⤶"
       />
+      {loading && (
+        <div className="flex justify-center my-3">
+          Loading response...
+        </div>
+      )}
     </div>
   );
 });
