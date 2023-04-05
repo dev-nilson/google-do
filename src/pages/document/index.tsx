@@ -14,8 +14,11 @@ function Document() {
   const textEditorRef = useRef<any>(null);
 
   useEffect(() => {
-    const doc = JSON.parse(localStorage.getItem("doc")!);
-    setTitle(doc.title);
+    const docString = localStorage.getItem("doc");
+    if (docString) {
+      const doc = JSON.parse(docString);
+      setTitle(doc.title);
+    }
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
