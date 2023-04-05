@@ -26,7 +26,13 @@ function Explorer() {
         </div>
         <div className="flex items-center justify-between text-gray-700 text-sm">
           <h2 className="font-medium flex-grow">{title}</h2>
-          <p className="font-medium mr-12">{date}</p>
+          <p className="font-medium mr-12">
+            {new Date(date).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </p>
           <MoreVertIcon />
         </div>
       </div>
