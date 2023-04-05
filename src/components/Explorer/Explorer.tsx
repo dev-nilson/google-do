@@ -19,13 +19,13 @@ function Explorer() {
   return (
     <section className="bg-white px-10">
       <div className="max-w-5xl mx-auto py-8">
-        <div className="flex items-center justify-between text-gray-700 text-sm mb-5">
+        <div className="flex items-center justify-between text-gray-700 text-sm mb-5 px-4">
           <h2 className="font-semibold flex-grow">Documents</h2>
           <p className="font-semibold mr-12">Date</p>
           <FolderIcon />
         </div>
-        <div className="flex items-center justify-between text-gray-700 text-sm">
-          <h2 className="font-medium flex-grow">{title}</h2>
+        <div className="flex items-center justify-between text-gray-700 text-sm cursor-pointer py-3 px-5 rounded-full hover:bg-blue-50">
+          <h2 className="font-medium flex-grow">🟦 {title}</h2>
           <p className="font-medium mr-12">
             {new Date(date).toLocaleDateString("en-US", {
               month: "short",
