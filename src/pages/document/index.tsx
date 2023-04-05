@@ -14,7 +14,8 @@ function Document() {
   const textEditorRef = useRef<any>(null);
 
   useEffect(() => {
-    setTitle(localStorage.getItem("title") || "");
+    const doc = JSON.parse(localStorage.getItem("doc")!);
+    setTitle(doc.title);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +34,7 @@ function Document() {
       setError("Name document before saving");
     } else {
       setError("");
-      localStorage.setItem("title", title);
+      localStorage.setItem("doc", JSON.stringify({ title, date: Date.now() }));
       textEditorRef.current.saveDocument();
     }
   };
