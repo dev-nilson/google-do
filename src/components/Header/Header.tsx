@@ -22,7 +22,7 @@ function Header() {
         <h1>Does</h1>
       </Link>
 
-      <div className="mx-5 md:mx-20 flex flex-grow items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-md focus-within:shadow-md">
+      <div className="hidden mx-5 md:mx-20 sm:flex flex-grow items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-md focus-within:shadow-md">
         <SearchIcon />
         <input
           className="flex-grow px-4 text-base bg-transparent outline-none"
@@ -32,7 +32,7 @@ function Header() {
       </div>
 
       <IconButton
-        className="rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
+        className="hidden sm:inline-block rounded-full border-transparent focus:ring-0 p-6 text-gray-700"
         color="gray"
         variant="outlined"
         ripple={true}
