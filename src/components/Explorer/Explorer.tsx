@@ -26,7 +26,7 @@ function Explorer() {
           <FolderIcon />
         </div>
         <Link href="/document">
-          <div className="flex items-center justify-between text-sm text-gray-600 cursor-pointer py-3 px-5 rounded-full hover:bg-blue-50 border">
+          <div className="flex items-center justify-between text-sm text-gray-600 cursor-pointer py-3 px-5 rounded-full hover:bg-blue-50 border hover:border-blue-50">
             <h2 className="font-semibold flex-grow text-gray-800">{title}</h2>
             <p className="font-medium mr-12">
               {new Date(date).toLocaleDateString("en-US", {
