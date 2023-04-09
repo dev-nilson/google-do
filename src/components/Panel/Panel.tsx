@@ -20,14 +20,12 @@ function Panel() {
           </IconButton>
         </div>
         <div>
-          <Link href="/document">
-            <div className="relative h-40 w-32 border-[1px] cursor-pointer border-gray-300 rounded-md hover:border-blue-500">
+          <div className="relative h-40 w-32 border-[1px] cursor-pointer border-gray-300 rounded-md hover:border-blue-500">
+            <Link href="/document" className="w-fit">
               <Image className="rounded-md" src={newDoc} fill={true} alt="" />
-            </div>
-            <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">
-              Blank
-            </p>
-          </Link>
+            </Link>
+          </div>
+          <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">Blank</p>
         </div>
       </div>
     </section>
