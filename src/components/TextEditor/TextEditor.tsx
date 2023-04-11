@@ -47,7 +47,12 @@ const TextEditor = forwardRef((props, ref) => {
       openai
         .createChatCompletion({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: prompt }],
+          messages: [
+            {
+              role: "user",
+              content: `Give me a fake response for this prompt: ${prompt}`,
+            },
+          ],
         })
         .then((result) => {
           const response = result.data.choices[0].message?.content;
@@ -80,9 +85,7 @@ const TextEditor = forwardRef((props, ref) => {
         placeholder="Write your question and press enter to get a response ⤶"
       />
       {loading && (
-        <div className="flex justify-center my-3">
-          Loading response...
-        </div>
+        <div className="flex justify-center my-3">Loading response...</div>
       )}
     </div>
   );
