@@ -3,20 +3,12 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FolderIcon from "@mui/icons-material/Folder";
 import Link from "next/link";
 
-function Explorer() {
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+type ExplorerProps = {
+  title: string;
+  date: string;
+};
 
-  useEffect(() => {
-    const docString = localStorage.getItem("doc");
-
-    if (docString) {
-      const doc = JSON.parse(docString);
-      setTitle(doc.title);
-      setDate(doc.date);
-    }
-  }, []);
-
+function Explorer({ title, date }: ExplorerProps) {
   return (
     <section className="bg-white px-10">
       <div className="max-w-5xl mx-auto py-8">

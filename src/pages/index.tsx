@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import Header from "@/components/Header/Header";
@@ -8,6 +8,19 @@ import Panel from "@/components/Panel/Panel";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    const docString = localStorage.getItem("doc");
+
+    if (docString) {
+      const doc = JSON.parse(docString);
+      setTitle(doc.title);
+      setDate(doc.date);
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -17,8 +30,8 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <Panel />
-        <Explorer />
+        {!title && <Panel />}
+        <Explorer title={title} date={date} />
       </main>
     </>
   );
