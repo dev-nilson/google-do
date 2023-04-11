@@ -30,8 +30,10 @@ const TextEditor = forwardRef((props, ref) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(() => {
-    const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
-    setEditorState(EditorState.createWithContent(state));
+    if (localStorage.getItem("data")) {
+      const state = convertFromRaw(JSON.parse(localStorage.getItem("data")!));
+      setEditorState(EditorState.createWithContent(state));
+    }
   }, []);
 
   const onEditorStateChange = (editorState: any) => {

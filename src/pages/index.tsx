@@ -29,10 +29,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main>
-        {!title && <Panel />}
-        <Explorer title={title} date={date} />
-      </main>
+      <main>{title ? <Explorer title={title} date={date} /> : <Panel />}</main>
     </>
   );
 }
