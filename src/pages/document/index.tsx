@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../assets/logo.png";
@@ -49,6 +50,9 @@ function Document() {
 
   return (
     <div>
+      <Head>
+        <title>{title ? title : "Untitled Document"}</title>
+      </Head>
       <header className="flex justify-between items-center px-5 pt-3 pb-1">
         <Link href="/">
           <Image src={logo} alt="logo" width={25} height={25} />
