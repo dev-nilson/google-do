@@ -1,15 +1,17 @@
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../assets/logo.png";
 import { Button } from "@material-tailwind/react";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import TextEditor from "@/components/TextEditor/TextEditor";
 
 function Document() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const textEditorRef = useRef<any>(null);
 
@@ -26,8 +28,11 @@ function Document() {
   };
 
   const handleClear = () => {
-    if (confirm("Are you sure you want to clear this document?") == true) {
+    if (confirm("Are you sure you want to delete this document?")) {
       textEditorRef.current.clearDocument();
+      localStorage.removeItem("doc");
+      localStorage.removeItem("data");
+      router.push("/");
     }
   };
 
@@ -68,16 +73,6 @@ function Document() {
             <p className="option">Tools</p>
           </div>
         </div>
-
-        <Button
-          className="flex items-center gap-1 mx-1"
-          size="sm"
-          variant="outlined"
-          onClick={handleClear}
-        >
-          <DeleteForeverIcon fontSize="small" />
-          Clear
-        </Button>
         <Button
           className="flex items-center gap-1 mx-1"
           size="sm"
@@ -85,6 +80,15 @@ function Document() {
         >
           <SaveIcon fontSize="small" />
           Save
+        </Button>
+        <Button
+          className="flex items-center gap-1 mx-1"
+          size="sm"
+          variant="outlined"
+          onClick={handleClear}
+        >
+          <DeleteIcon fontSize="small" />
+          Delete
         </Button>
       </header>
       <TextEditor ref={textEditorRef} />
